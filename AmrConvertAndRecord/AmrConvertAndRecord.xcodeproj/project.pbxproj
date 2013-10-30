@@ -27,6 +27,9 @@
 		9E17DC8A181E0F76005C6794 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E17DC82181E0F76005C6794 /* libopencore-amrnb.a */; };
 		9E17DC8B181E0F76005C6794 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E17DC83181E0F76005C6794 /* libopencore-amrwb.a */; };
 		9E17DC8E181E3786005C6794 /* CWUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E17DC8D181E3786005C6794 /* CWUtility.m */; };
+		9E17DC91181F533D005C6794 /* CWTouchHandleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E17DC90181F533D005C6794 /* CWTouchHandleView.m */; };
+		9EDFF6721820D5C60014F421 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFF66F1820D5C60014F421 /* amrFileCodec.mm */; };
+		9EDFF6731820D5C60014F421 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 9EDFF6711820D5C60014F421 /* wav.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +73,12 @@
 		9E17DC89181E0F76005C6794 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
 		9E17DC8C181E3786005C6794 /* CWUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWUtility.h; sourceTree = "<group>"; };
 		9E17DC8D181E3786005C6794 /* CWUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWUtility.m; sourceTree = "<group>"; };
+		9E17DC8F181F533D005C6794 /* CWTouchHandleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWTouchHandleView.h; sourceTree = "<group>"; };
+		9E17DC90181F533D005C6794 /* CWTouchHandleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWTouchHandleView.m; sourceTree = "<group>"; };
+		9EDFF66E1820D5C60014F421 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
+		9EDFF66F1820D5C60014F421 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
+		9EDFF6701820D5C60014F421 /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
+		9EDFF6711820D5C60014F421 /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +113,7 @@
 		9E17DC3A181DFCA9005C6794 = {
 			isa = PBXGroup;
 			children = (
+				9EDFF66D1820D5C60014F421 /* amrwapper */,
 				9E17DC80181E0F76005C6794 /* opencore */,
 				9E17DC4C181DFCA9005C6794 /* AmrConvertAndRecord */,
 				9E17DC65181DFCA9005C6794 /* AmrConvertAndRecordTests */,
@@ -147,6 +157,8 @@
 				9E17DC4D181DFCA9005C6794 /* Supporting Files */,
 				9E17DC8C181E3786005C6794 /* CWUtility.h */,
 				9E17DC8D181E3786005C6794 /* CWUtility.m */,
+				9E17DC8F181F533D005C6794 /* CWTouchHandleView.h */,
+				9E17DC90181F533D005C6794 /* CWTouchHandleView.m */,
 			);
 			path = AmrConvertAndRecord;
 			sourceTree = "<group>";
@@ -215,6 +227,17 @@
 				9E17DC89181E0F76005C6794 /* if_rom.h */,
 			);
 			path = "opencore-amrwb";
+			sourceTree = "<group>";
+		};
+		9EDFF66D1820D5C60014F421 /* amrwapper */ = {
+			isa = PBXGroup;
+			children = (
+				9EDFF66E1820D5C60014F421 /* amrFileCodec.h */,
+				9EDFF66F1820D5C60014F421 /* amrFileCodec.mm */,
+				9EDFF6701820D5C60014F421 /* wav.h */,
+				9EDFF6711820D5C60014F421 /* wav.mm */,
+			);
+			path = amrwapper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +340,9 @@
 				9E17DC8E181E3786005C6794 /* CWUtility.m in Sources */,
 				9E17DC57181DFCA9005C6794 /* CWAppDelegate.m in Sources */,
 				9E17DC78181DFD24005C6794 /* CWMainViewController.m in Sources */,
+				9EDFF6731820D5C60014F421 /* wav.mm in Sources */,
+				9EDFF6721820D5C60014F421 /* amrFileCodec.mm in Sources */,
+				9E17DC91181F533D005C6794 /* CWTouchHandleView.m in Sources */,
 				9E17DC53181DFCA9005C6794 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,11 +460,18 @@
 		9E17DC70181DFCAA005C6794 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_WARN_BOOL_CONVERSION = NO;
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AmrConvertAndRecord/AmrConvertAndRecord-Prefix.pch";
 				INFOPLIST_FILE = "AmrConvertAndRecord/AmrConvertAndRecord-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/holyenzou/Dropbox/Code/demo/AmrCovertAndRecordDemoByMySelf/AmrConverterAndRecordDemo/AmrConvertAndRecord/opencore/lib,
@@ -451,11 +484,18 @@
 		9E17DC71181DFCAA005C6794 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = NO;
+				CLANG_WARN_BOOL_CONVERSION = NO;
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_ENABLE_CPP_EXCEPTIONS = YES;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AmrConvertAndRecord/AmrConvertAndRecord-Prefix.pch";
 				INFOPLIST_FILE = "AmrConvertAndRecord/AmrConvertAndRecord-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/holyenzou/Dropbox/Code/demo/AmrCovertAndRecordDemoByMySelf/AmrConverterAndRecordDemo/AmrConvertAndRecord/opencore/lib,
@@ -526,6 +566,7 @@
 				9E17DC71181DFCAA005C6794 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9E17DC72181DFCAA005C6794 /* Build configuration list for PBXNativeTarget "AmrConvertAndRecordTests" */ = {
 			isa = XCConfigurationList;
@@ -534,6 +575,7 @@
 				9E17DC74181DFCAA005C6794 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

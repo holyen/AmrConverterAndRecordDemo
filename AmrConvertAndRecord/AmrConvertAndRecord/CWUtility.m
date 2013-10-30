@@ -64,9 +64,19 @@
     return [[NSFileManager defaultManager] removeItemAtPath:aPath error:nil];
 }
 
+/**
+ *	开始录音
+ *
+ *	@param 	aFileName  录音音频文件名
+ *
+ *	@return	void
+ */
 - (void)beginRecordByFileName:(NSString *)aFileName
 {
+    _wavNewPath = [[NSString alloc] initWithFormat:@"%@%@new.wav", [CWUtility voiceDocumentDirectory], aFileName];
+    _amrPath = [[NSString alloc] initWithFormat:@"%@%@.amr", [CWUtility voiceDocumentDirectory], aFileName];
     NSString *path = [[NSString alloc] initWithFormat:@"%@%@.wav", [CWUtility voiceDocumentDirectory], aFileName];
+    _path = path;
     self.recorder = [[AVAudioRecorder alloc] initWithURL:[NSURL URLWithString:path]
                                                 settings:[CWUtility audioRecorderSettingDict]
                                                    error:nil];
@@ -76,6 +86,20 @@
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
     [[AVAudioSession sharedInstance] setActive:YES error:nil];
     [self.recorder record];
+}
+
+//停止录音
+- (void)stopRecord
+{
+    if (self.recorder.isRecording)
+        [self.recorder stop];
+}
+
+- (void)playRecordByPath:(NSString *)aPath
+{
+    _player = [[AVAudioPlayer alloc] init];
+    _player = [_player initWithContentsOfURL:[NSURL URLWithString:aPath] error:nil];
+    [_player play];
 }
 
 /**
@@ -94,6 +118,60 @@
                                    [NSNumber numberWithInt: 1], AVNumberOfChannelsKey,//通道的数目
                                    nil];
     return recordSetting;
+}
+
+/**
+ *	根据文件路径获取文件大小
+ *
+ *	@param 	aFilePath 	文件路径
+ *
+ *	@return	文件大小
+ */
+- (NSInteger)sizeOfFileFromPath:(NSString *)aFilePath
+{
+    NSFileManager *fileManager = [[NSFileManager alloc] init];
+    if ([fileManager fileExistsAtPath:aFilePath]) {
+        NSError *error = nil;
+        NSDictionary *attributes = [fileManager attributesOfItemAtPath:aFilePath error:&error];
+        NSNumber *fileSize;
+        if ((fileSize = [attributes objectForKey:NSFileSize])) {
+            return [fileSize intValue];
+        } else {
+            return -1;
+        }
+    } else {
+        return -1;
+    }
+}
+
+/**
+ *	amr格式转换成wav
+ *
+ *	@param 	aSavePath 	转成wav后保存的路径
+ *
+ *	@return	是否转换成功
+ */
++ (BOOL)amrToWav:(NSString*)aAmrPath savePath:(NSString*)aSavePath
+{
+    if (DecodeAMRFileToWAVEFile([aAmrPath cStringUsingEncoding:NSASCIIStringEncoding], [aSavePath cStringUsingEncoding:NSASCIIStringEncoding]))
+        return YES;
+    
+    return NO;
+}
+
+/**
+ *	wav格式转换成amr
+ *
+ *	@param 	aSavePath 	转成amr后保存的路径
+ *
+ *	@return	是否转换成功
+ */
++ (BOOL)wavToAmr:(NSString*)aWavPath savePath:(NSString*)aSavePath
+{
+    if (EncodeWAVEFileToAMRFile([aWavPath cStringUsingEncoding:NSASCIIStringEncoding], [aSavePath cStringUsingEncoding:NSASCIIStringEncoding], 1, 16))
+        return YES;
+    
+    return NO;
 }
 
 #pragma mark -
